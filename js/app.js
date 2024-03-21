@@ -1,11 +1,3 @@
-/* 
-Create a function 'getComputerChoice' to make the computer play
-Make this function return either 'rock', 'paper' or 'scissors'
-
-
-
-*/
-
 const gameOptions = ['Rock', 'Paper', 'Scissors'];
 
 function getComputerChoice() {
@@ -17,25 +9,41 @@ function getComputerChoice() {
     } else {
         randomChoice = gameOptions[2]
     }
+    
     return (randomChoice)
 }
 
-function playRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase()
-    if (playerSelection == 'paper' && computerSelection == 'Rock') {
-        return ('You won! Paper beats Rock!')
-    } else if (playerSelection == 'rock' && computerSelection == 'Paper') {
-        return ('You lose! Paper beats Rock!')
-    } else if (playerSelection == 'scissors' && computerSelection == 'Paper') {
-        return ('You won! Scissors beats Paper!')
-    } else if (playerSelection == 'paper' && computerSelection == 'Scissors') {
-        return ('You lose! Scissors beats Paper!')
-    } else if (playerSelection == 'rock' && computerSelection == 'Scissors') {
-        return ('You won! Rock beats Scissors!')
-    } else if (playerSelection == 'scissors' && computerSelection == 'Rock') {
-        return ('You lose! Rock beats Scissors!')
-    }
-}
+function playRound(result, playerSelection, computerSelection) {
+    playerSelection = prompt('Rock, Paper or Scissors?')
+    playerSelection = playerSelection.toUpperCase()
+    computerSelection = getComputerChoice();
+    if (playerSelection == 'ROCK' && computerSelection == 'Rock') {
+        result = "It's a Tie!"
 
-const playerSelection = 'Rock';
-const computerSelection = getComputerChoice();
+    } else if (playerSelection == 'PAPER' && computerSelection == 'Paper') {
+        result = "It's is a Tie!"
+
+    } else if (playerSelection == 'SCISSORS' && computerSelection == 'Scissors') {
+        result = "It's is a Tie!"
+
+    } else if (playerSelection == 'ROCK' && computerSelection == 'Scissors') {
+        result = 'You won! Rock beats Scissors!'
+
+    } else if (playerSelection == 'SCISSORS' && computerSelection == 'Rock') {
+        result = 'You lose! Rock beats Scissors!'
+
+    } else if (playerSelection == 'PAPER' && computerSelection == 'Rock') {
+        result = 'You win! Paper beats Rock!'
+    
+    } else if (playerSelection == 'ROCK' && computerSelection == 'Paper') {
+        result = 'You lose! Paper beats Rock!'
+
+    } else if (playerSelection == 'SCISSORS' && computerSelection == 'Paper') {
+        result = 'You won! Scissors beats Paper!'
+
+    } else if (playerSelection == 'PAPER' && computerSelection == 'Scissors') {
+        result = 'You lose! Scissors beats Paper!'
+    }
+
+    return(result)
+}
