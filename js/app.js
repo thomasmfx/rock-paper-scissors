@@ -22,45 +22,55 @@ function playRound(playerSelection, computerSelection) {
     if (playerSelection == 'ROCK' && computerSelection == 'Rock') {
         result = "It's a Tie!"
         alert(result)
+        alert(`Player Points: ${playerPoints} | Computer Points: ${computerPoints}`)
 
     } else if (playerSelection == 'PAPER' && computerSelection == 'Paper') {
         result = "It's is a Tie!"
         alert(result)
+        alert(`Player Points: ${playerPoints} | Computer Points: ${computerPoints}`)
 
     } else if (playerSelection == 'SCISSORS' && computerSelection == 'Scissors') {
         result = "It's is a Tie!"
         alert(result)
+        alert(`Player Points: ${playerPoints} | Computer Points: ${computerPoints}`)
 
     } else if (playerSelection == 'ROCK' && computerSelection == 'Scissors') {
-        result = 'You won! Rock beats Scissors!'
+        result = 'Round won! Rock beats Scissors!'
         alert(result)
         playerPoints++;
+        alert(`Player Points: ${playerPoints} | Computer Points: ${computerPoints}`)
 
     } else if (playerSelection == 'SCISSORS' && computerSelection == 'Rock') {
-        result = 'You lose! Rock beats Scissors!'
+        result = 'Round lost! Rock beats Scissors!'
         alert(result)
         computerPoints++;
+        alert(`Player Points: ${playerPoints} | Computer Points: ${computerPoints}`)
 
     } else if (playerSelection == 'PAPER' && computerSelection == 'Rock') {
-        result = 'You win! Paper beats Rock!'
+        result = 'Round won! Paper beats Rock!'
         alert(result)
         playerPoints++;
+        alert(`Player Points: ${playerPoints} | Computer Points: ${computerPoints}`)
     
     } else if (playerSelection == 'ROCK' && computerSelection == 'Paper') {
-        result = 'You lose! Paper beats Rock!'
+        result = 'Round lost! Paper beats Rock!'
         alert(result)
         computerPoints++;
-
+        alert(`Player Points: ${playerPoints} | Computer Points: ${computerPoints}`)
+        
     } else if (playerSelection == 'SCISSORS' && computerSelection == 'Paper') {
-        result = 'You won! Scissors beats Paper!'
+        result = 'Round won! Scissors beats Paper!'
         alert(result)
         playerPoints++;
+        alert(`Player Points: ${playerPoints} | Computer Points: ${computerPoints}`)
 
     } else if (playerSelection == 'PAPER' && computerSelection == 'Scissors') {
-        result = 'You lose! Scissors beats Paper!'
+        result = 'Round lost! Scissors beats Paper!'
         alert(result)
         computerPoints++;
+        alert(`Player Points: ${playerPoints} | Computer Points: ${computerPoints}`)
     }
+
 }   
 
 function playGame() {
@@ -68,18 +78,11 @@ function playGame() {
         playRound()
         if (playerPoints == 5) {
             alert('Congratulations! You won the game!')
+            break;
         } else if (computerPoints == 5) {
-            alert('Damn, you lost...')
+            alert('You lost. Gamer Over!')
+            break;
         }
     }
 }
-
-    // for (i = 1; i < 5; i++) {
-    // if (result.includes('Won')) {
-    //     playerPoints += 1;
-    // } else if (result.includes('Lose')) {
-    //     computerPoints += 1;
-    // } else if (result.includes('Tie')) {
-    //     //pass
-    // }
 
