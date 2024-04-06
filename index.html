@@ -4,16 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-    <script src="./js/app.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="./js/app.js" defer></script>
 </head>
 <body>
-    <h1 style="text-align: center;">Rock Paper Scissors</h1>
+    <h1>Rock Paper Scissors</h1>
     <hr>
-    <p style="text-align: center;">
-        Press <em>CTRL + SHIFT + J</em> (Windows/Linux) or <em>Command + Option + J</em> (Mac) to open console and type <em>console.log(playGame())</em>
-    </p>
-    <p style="text-align: center;">
-        It's a best of 5. Good luck!
-    </p>
+    <div id="game-choices">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+    </div>
+    <h2>Score</h2>
+    <ul id="score">
+
+    </ul>
 </body>
 </html>
