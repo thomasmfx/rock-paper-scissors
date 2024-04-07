@@ -15,8 +15,17 @@ function getComputerChoice() {
     } else {
         randomChoice = gameOptions[2]
     }
+    
     return (randomChoice)
 };
+
+function checkResult(roundResult) {
+    if (roundResult.includes("won")) {
+        playerPoints++;
+    } else if (roundResult.includes("lost")) {
+        computerPoints++;
+    }
+}
 
 choiceBtns.forEach((choice) => {
     choice.addEventListener("click", () => {
@@ -27,97 +36,96 @@ choiceBtns.forEach((choice) => {
         if (choice.textContent == 'Rock' && computerSelection == 'Rock') {
             roundResult = "It's a Tie!"
             p.textContent = roundResult
-            scoreList.appendChild(p)
-            scoreList.appendChild(result)
+            scoreList.insertBefore(result, scoreList.firstElementChild)
+            scoreList.insertBefore(p, scoreList.firstElementChild)
             result.textContent = `Player Points: ${playerPoints} | Computer Points: ${computerPoints}`;
+            p.setAttribute("style", "font-size: 18px; color: orange");
+
+        } else if (choice.textContent == 'Paper' && computerSelection == 'Paper') {
+            roundResult = "It's a Tie!"
+            p.textContent = roundResult
+            scoreList.insertBefore(result, scoreList.firstElementChild)
+            scoreList.insertBefore(p, scoreList.firstElementChild)
+            result.textContent = `Player Points: ${playerPoints} | Computer Points: ${computerPoints}`;
+            p.setAttribute("style", "font-size: 18px; color: orange");
+
+        } else if (choice.textContent == 'Scissors' && computerSelection == 'Scissors') {
+            roundResult = "It's a Tie!"
+            p.textContent = roundResult
+            scoreList.insertBefore(result, scoreList.firstElementChild)
+            scoreList.insertBefore(p, scoreList.firstElementChild)
+            result.textContent = `Player Points: ${playerPoints} | Computer Points: ${computerPoints}`;
+            p.setAttribute("style", "font-size: 18px; color: orange");
+
+        } else if (choice.textContent == 'Rock' && computerSelection == 'Scissors') {
+            roundResult = "Round won! Rock beats Paper!"
+            p.textContent = roundResult
+            scoreList.insertBefore(result, scoreList.firstElementChild)
+            scoreList.insertBefore(p, scoreList.firstElementChild)
+            playerPoints++;
+            result.textContent = `Player Points: ${playerPoints} | Computer Points: ${computerPoints}`;
+            p.setAttribute("style", "font-size: 18px; color: green");
+
+        } else if (choice.textContent == 'Scissors' && computerSelection == 'Rock') {
+            roundResult = "Round lost! Rock beats Scissors!"
+            p.textContent = roundResult
+            scoreList.insertBefore(result, scoreList.firstElementChild)
+            scoreList.insertBefore(p, scoreList.firstElementChild)
+            computerPoints++;
+            result.textContent = `Player Points: ${playerPoints} | Computer Points: ${computerPoints}`;
+            p.setAttribute("style", "font-size: 18px; color: red");
+
+        } else if (choice.textContent == 'Paper' && computerSelection == 'Rock') {
+            roundResult = "Round won! Paper beats Rock"
+            p.textContent = roundResult
+            scoreList.insertBefore(result, scoreList.firstElementChild)
+            scoreList.insertBefore(p, scoreList.firstElementChild)
+            playerPoints++;
+            result.textContent = `Player Points: ${playerPoints} | Computer Points: ${computerPoints}`;
+            p.setAttribute("style", "font-size: 18px; color: green");
+
+        } else if (choice.textContent == 'Rock' && computerSelection == 'Paper') {
+            roundResult = "Round lost! Paper beats Rock"
+            p.textContent = roundResult
+            scoreList.insertBefore(result, scoreList.firstElementChild)
+            scoreList.insertBefore(p, scoreList.firstElementChild)
+            computerPoints++;
+            result.textContent = `Player Points: ${playerPoints} | Computer Points: ${computerPoints}`;
+            p.setAttribute("style", "font-size: 18px; color: red");
+
+        } else if (choice.textContent == 'Scissors' && computerSelection == 'Paper') {
+            roundResult = "Round won! Scissors beats Paper"
+            p.textContent = roundResult
+            scoreList.insertBefore(result, scoreList.firstElementChild)
+            scoreList.insertBefore(p, scoreList.firstElementChild)
+            playerPoints++;
+            result.textContent = `Player Points: ${playerPoints} | Computer Points: ${computerPoints}`;
+            p.setAttribute("style", "font-size: 18px; color: green");
+
+        } else if (choice.textContent == 'Paper' && computerSelection == 'Scissors') {
+            roundResult = "Round lost! Scissors beats Paper"
+            p.textContent = roundResult
+            scoreList.insertBefore(result, scoreList.firstElementChild)
+            scoreList.insertBefore(p, scoreList.firstElementChild)
+            computerPoints++;
+            result.textContent = `Player Points: ${playerPoints} | Computer Points: ${computerPoints}`;
+            p.setAttribute("style", "font-size: 18px; color: red");
+        }
+
+        if (playerPoints == 5) {
+            playerPoints = 0;
+            computerPoints = 0;
+            p.textContent = "Congratulations! You won!"
+            scoreList.insertBefore(p, scoreList.firstElementChild)
+            p.setAttribute("style", "font-size: 48px; color: green")
+        } else if (computerPoints == 5) {
+            playerPoints = 0;
+            computerPoints = 0;
+            p.textContent = "Oh oh... You lost!"
+            scoreList.insertBefore(p, scoreList.firstElementChild)
+            p.setAttribute("style", "font-size: 48px; color: red")
         }
 
         result.setAttribute("style", "list-style: none");
-        p.setAttribute("style", "font-size: 18px; color: red");
     });
 });
-
-
-
-
-function playround(playerSelection, computerSelection) {
-    playerSelection = prompt('Rock, Paper or Scissors?')
-    playerSelection = playerSelection.toUpperCase()
-    computerSelection = getComputerChoice();
-    if (playerSelection == 'ROCK' && computerSelection == 'Rock') {
-        roundResult = "It's a Tie!"
-        // alert(roundResult)
-        scoreList.appendChild(li)
-        // 2 opcao: adicionar um span no li e o texto no span
-        li.textContent = `Player Points: ${playerPoints} | Computer Points: ${computerPoints}`;
-
-    } else if (playerSelection == 'PAPER' && computerSelection == 'Paper') {
-        roundResult = "It's is a Tie!"
-        // alert(roundResult)
-        scoreList.appendChild(li)
-        li.textContent = `Player Points: ${playerPoints} | Computer Points: ${computerPoints}`
-
-    } else if (playerSelection == 'SCISSORS' && computerSelection == 'Scissors') {
-        roundResult = "It's is a Tie!"
-        // alert(roundResult)
-        scoreList.appendChild(li)
-        li.textContent = `Player Points: ${playerPoints} | Computer Points: ${computerPoints}`
-
-    } else if (playerSelection == 'ROCK' && computerSelection == 'Scissors') {
-        roundResult = 'Round won! Rock beats Scissors!'
-        // alert(roundResult)
-        playerPoints++;
-        scoreList.appendChild(li)
-        li.textContent = `Player Points: ${playerPoints} | Computer Points: ${computerPoints}`
-
-    } else if (playerSelection == 'SCISSORS' && computerSelection == 'Rock') {
-        roundResult = 'Round lost! Rock beats Scissors!'
-        // alert(roundResult)
-        computerPoints++;
-        scoreList.appendChild(li)
-        li.textContent = `Player Points: ${playerPoints} | Computer Points: ${computerPoints}`
-
-    } else if (playerSelection == 'PAPER' && computerSelection == 'Rock') {
-        roundResult = 'Round won! Paper beats Rock!'
-        // alert(roundResult)
-        playerPoints++;
-        scoreList.appendChild(li)
-        li.textContent = `Player Points: ${playerPoints} | Computer Points: ${computerPoints}`
-    
-    } else if (playerSelection == 'ROCK' && computerSelection == 'Paper') {
-        roundResult = 'Round lost! Paper beats Rock!'
-        // alert(roundResult)
-        computerPoints++;
-        scoreList.appendChild(li)
-        li.textContent = `Player Points: ${playerPoints} | Computer Points: ${computerPoints}`
-        
-    } else if (playerSelection == 'SCISSORS' && computerSelection == 'Paper') {
-        roundResult = 'Round won! Scissors beats Paper!'
-        // alert(roundResult)
-        playerPoints++;
-        scoreList.appendChild(li)
-        li.textContent = `Player Points: ${playerPoints} | Computer Points: ${computerPoints}`
-
-    } else if (playerSelection == 'PAPER' && computerSelection == 'Scissors') {
-        roundResult = 'Round lost! Scissors beats Paper!'
-        // alert(roundResult)
-        computerPoints++;
-        scoreList.appendChild(li)
-        li.textContent = `Player Points: ${playerPoints} | Computer Points: ${computerPoints}`
-    }
-
-}   
-
-function playGame() {
-    while (playerPoints < 5 || computerPoints < 5) {
-        playRound()
-        if (playerPoints == 5) {
-            alert('Congratulations! You won the game!')
-            break;
-        } else if (computerPoints == 5) {
-            alert('You lost. Gamer Over!')
-            break;
-        }
-    }
-}
-
