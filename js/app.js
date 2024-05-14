@@ -1,6 +1,6 @@
 const choiceBtns = document.querySelectorAll("button");
 const scoreList = document.querySelector("#score");
-const scoreHeading = document.querySelector("h2");
+const scoreBoard = document.querySelector("h3");
 
 const gameOptions = ['Rock', 'Paper', 'Scissors'];
 let playerPoints = 0;
@@ -16,7 +16,7 @@ function getComputerChoice() {
         randomChoice = gameOptions[2]
     }
     
-    return (randomChoice)
+    return randomChoice;
 };
 
 choiceBtns.forEach((choice) => {
@@ -26,70 +26,64 @@ choiceBtns.forEach((choice) => {
         computerSelection = getComputerChoice();
 
         // round tied
-        if (choice.textContent == computerSelection) {
+        if (choice.value == computerSelection) {
             roundResult = "It's a Tie!"
             p.textContent = roundResult
-            scoreList.insertBefore(result, scoreList.firstElementChild)
             scoreList.insertBefore(p, scoreList.firstElementChild)
-            result.textContent = `Player Points: ${playerPoints} | Computer Points: ${computerPoints}`;
-            p.setAttribute("style", "font-size: 18px; color: orange");
+            p.setAttribute("style", "font-size: 18px; color: #ffc300");
+            scoreBoard.textContent = `Player Points: ${playerPoints} | Computer Points: ${computerPoints}`
         }
 
         // round won
         if (
-            (choice.textContent == 'Rock' && computerSelection == 'Scissors') ||
-            (choice.textContent == 'Paper' && computerSelection == 'Rock') ||
-            (choice.textContent == 'Scissors' && computerSelection == 'Paper')
+            (choice.value == 'Rock' && computerSelection == 'Scissors') ||
+            (choice.value == 'Paper' && computerSelection == 'Rock') ||
+            (choice.value == 'Scissors' && computerSelection == 'Paper')
 
         ) {    
-            roundResult = `Round won! ${choice.textContent} beats ${computerSelection}!`
+            roundResult = `Round won! ${choice.value} beats ${computerSelection}!`
             p.textContent = roundResult
             scoreList.insertBefore(result, scoreList.firstElementChild)
             scoreList.insertBefore(p, scoreList.firstElementChild)
             playerPoints++;
-            result.textContent = `Player Points: ${playerPoints} | Computer Points: ${computerPoints}`;
-            p.setAttribute("style", "font-size: 18px; color: green");
-
+            p.setAttribute("style", "font-size: 18px; color: #80b918");
+            scoreBoard.textContent = `Player Points: ${playerPoints} | Computer Points: ${computerPoints}`
         }
 
         // round lost
         if ( 
-            (choice.textContent == 'Scissors' && computerSelection == 'Rock') ||
-            (choice.textContent == 'Rock' && computerSelection == 'Paper') ||
-            (choice.textContent == 'Paper' && computerSelection == 'Scissors')
+            (choice.value == 'Scissors' && computerSelection == 'Rock') ||
+            (choice.value == 'Rock' && computerSelection == 'Paper') ||
+            (choice.value == 'Paper' && computerSelection == 'Scissors')
         ) {
-            roundResult = `Round lost! ${computerSelection} beats ${choice.textContent}!`
+            roundResult = `Round lost! ${computerSelection} beats ${choice.value}!`
             p.textContent = roundResult
             scoreList.insertBefore(result, scoreList.firstElementChild)
             scoreList.insertBefore(p, scoreList.firstElementChild)
             computerPoints++;
-            result.textContent = `Player Points: ${playerPoints} | Computer Points: ${computerPoints}`;
-            p.setAttribute("style", "font-size: 18px; color: red");
+            p.setAttribute("style", "font-size: 18px; color: #ef233c");
+            scoreBoard.textContent = `Player Points: ${playerPoints} | Computer Points: ${computerPoints}`
         }
 
         // check score
         if (playerPoints == 5) {
+            while (score.firstChild) {
+                score.firstChild.remove()
+            }
             playerPoints = 0;
             computerPoints = 0;
-            p.textContent = "Congratulations! You won!"
+            p.textContent = "You won!"
             scoreList.insertBefore(p, scoreList.firstElementChild)
-            p.setAttribute("style", "font-size: 48px; color: green")
+            p.setAttribute("style", "font-size: 48px; color: #80b918")
         } else if (computerPoints == 5) {
+            while (score.firstChild) {
+                score.firstChild.remove()
+            }
             playerPoints = 0;
             computerPoints = 0;
-            p.textContent = "Oh oh... You lost!"
+            p.textContent = "Oops... You lost!"
             scoreList.insertBefore(p, scoreList.firstElementChild)
-            p.setAttribute("style", "font-size: 48px; color: red")
+            p.setAttribute("style", "font-size: 48px; color: #ef233c")
         }
-
-        result.setAttribute("style", "list-style: none");
     });
 });
-
-// function checkResult(roundResult) {
-//     if (roundResult.includes("won")) {
-//         playerPoints++;
-//     } else if (roundResult.includes("lost")) {
-//         computerPoints++;
-//     }
-// }
