@@ -1,4 +1,4 @@
-# Rock-Paper-Scissors
+# rock-paper-scissors
 
 Live preview: [Rock-Paper-Scissors](https://thomasmfx.github.io/rock-paper-scissors/)
 
